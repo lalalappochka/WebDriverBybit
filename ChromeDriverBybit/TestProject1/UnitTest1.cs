@@ -13,7 +13,7 @@ namespace ChromeDriverUnitTest
         WebDriverWait wait;
         private string pageURL;
         private string userEmail = "lalalappochka@gmail.com";
-        private string userPassword = "Y9fWeAam7u5TtME";
+        private string userPassword = "P@ssw0rd";
 
         //public void ChromeDriverCreating(IWebDriver driver)
         //{
@@ -30,12 +30,16 @@ namespace ChromeDriverUnitTest
 
         //public void UserLogin()
         //{
-        //    IWebElement EnterButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
-        //    EnterButton.Click();
-       // IWebElement EmailField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
+        //    IWebElement LoginButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
+        //    LoginButton.Click();
+        // IWebElement EmailField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
         //EmailField.SendKeys(userEmail);
-        //}
-        [Test]
+        //IWebElement PasswordField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div[2]/input"));
+        //PasswordField.SendKeys(userPassword)
+        //IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
+       //û EnterField.Click();
+    //}
+    [Test]
         public void Test1()
         {
             driver = new ChromeDriver(@"D:\WebDriver");
@@ -43,13 +47,14 @@ namespace ChromeDriverUnitTest
             driver.Manage().Window.Maximize();
             pageURL = "https://testnet.bybit.com/";
             driver.Navigate().GoToUrl(pageURL);
-            IWebElement EnterButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
-            EnterButton.Click();
+            IWebElement LoginButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
+            LoginButton.Click();
             IWebElement EmailField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
             EmailField.SendKeys(userEmail);
             IWebElement PasswordField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div[2]/input"));
             PasswordField.SendKeys(userPassword);
-
+            IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
+            EnterField.Click();
         }
 
     }
