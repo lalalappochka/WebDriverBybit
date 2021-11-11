@@ -37,8 +37,14 @@ namespace ChromeDriverUnitTest
         //IWebElement PasswordField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div[2]/input"));
         //PasswordField.SendKeys(userPassword)
         //IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
-       //û EnterField.Click();
+       //EnterField.Click();
     //}
+     public void OpenPageSpot()
+        {
+            IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]"));
+            PageSpot.Click();
+
+        }
     [Test]
         public void Test1()
         {
@@ -55,6 +61,10 @@ namespace ChromeDriverUnitTest
             PasswordField.SendKeys(userPassword);
             IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
             EnterField.Click();
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(17));
+            IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]"));
+            PageSpot.Click();
+
         }
 
     }
