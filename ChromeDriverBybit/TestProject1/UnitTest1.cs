@@ -14,6 +14,7 @@ namespace ChromeDriverUnitTest
         private string pageURL;
         private string userEmail = "lalalappochka@gmail.com";
         private string userPassword = "P@ssw0rd";
+        private string typeofgraphic = "Connors RSI";
 
         //public void ChromeDriverCreating(IWebDriver driver)
         //{
@@ -62,10 +63,20 @@ namespace ChromeDriverUnitTest
             PasswordField.SendKeys(userPassword);
             IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
             EnterField.Click();
-            IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]"));
+            IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]")); /*Открывает страницу неавторизированную, в акк вошло*/
             PageSpot.Click();
-            /*IWebElement */
-            driver.Manage().Cookies = .getInstance().CookieList;
+            IWebElement AdvancedSection = driver.FindElement(By.XPath("//*[@id='root']/div[1]/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/span[2]"));
+            AdvancedSection.Click();
+            IWebElement Indicators = driver.FindElement(By.XPath("//*[@id='header - toolbar - indicators']/div/div"));
+            Indicators.Click();
+            IWebElement FindTypeOfGraphic = driver.FindElement(By.XPath("//*[@id='overlap - manager - root']/div/div/div[2]/div[2]/div[1]/input"));
+            FindTypeOfGraphic.SendKeys(typeofgraphic);
+            IWebElement FieldConnorRSI = driver.FindElement(By.XPath("//*[@id='overlap - manager - root']/div/div/div[2]/div[2]/div[2]/div[1]/div/div/div/div"));
+            FieldConnorRSI.Click();
+            IWebElement ExitCross = driver.FindElement(By.XPath("//*[@id='overlap - manager - root']/div/div/div[3]/svg/path"));
+            ExitCross.Click();
+
+
 
         }
 
