@@ -3,7 +3,7 @@ using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-
+using System.Text.Json;
 
 namespace ChromeDriverUnitTest
 {
@@ -53,6 +53,7 @@ namespace ChromeDriverUnitTest
             driver.Manage().Window.Maximize();
             pageURL = "https://testnet.bybit.com/";
             driver.Navigate().GoToUrl(pageURL);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12);
             IWebElement LoginButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
             LoginButton.Click();
             IWebElement EmailField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
@@ -61,9 +62,10 @@ namespace ChromeDriverUnitTest
             PasswordField.SendKeys(userPassword);
             IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
             EnterField.Click();
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(17));
             IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]"));
             PageSpot.Click();
+            /*IWebElement */
+            driver.Manage().Cookies = .getInstance().CookieList;
 
         }
 
