@@ -40,12 +40,12 @@ namespace ChromeDriverUnitTest
         //IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
        //EnterField.Click();
     //}
-     public void OpenPageSpot()
-        {
-            IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]"));
-            PageSpot.Click();
+     //public void OpenPageSpot()
+     //   {
+     //       IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]"));
+     //       PageSpot.Click();
 
-        }
+     //   }
     [Test]
         public void Test1()
         {
