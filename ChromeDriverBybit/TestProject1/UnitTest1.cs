@@ -48,7 +48,7 @@ namespace ChromeDriverUnitTest
     [Test]
         public void Test1()
         {
-            driver = new ChromeDriver(@"D:\WebDriver");
+            driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
             driver.Manage().Window.Maximize();
             pageURL = "https://testnet.bybit.com/";
