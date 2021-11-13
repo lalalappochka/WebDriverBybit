@@ -9,7 +9,7 @@ class CookieImport
 {
     private static CookieImport instance;
 
-    List<Cookie> CookieList;
+    public List<CustomCookie> CookieList;
 
     private CookieImport()
     {}
@@ -19,16 +19,24 @@ class CookieImport
         if (instance == null)
         {
             instance = new CookieImport();
-            instance.CookieList = new List<Cookie>();
+            instance.CookieList = new List<CustomCookie>();
         }
         return instance;
     }
 
-    public async void LoadCookies(string filepath)
+    public void LoadCookies(string filepath)
     {
-        using(FileStream fs = new FileStream("Cookie.json", FileMode.Open))
+        using(StreamReader fs = new StreamReader("D:\\3_course\\epam\\WebDriverBybit\\Cookie.json"))
         {
-            CookieList = await JsonSerializer.DeserializeAsync<List<Cookie>>(fs);
+            var str = fs.ReadToEnd();
+            CookieList = JsonSerializer.Deserialize<List<CustomCookie>>(str);
+
         }
     }
+}
+
+class CustomCookie
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
 }

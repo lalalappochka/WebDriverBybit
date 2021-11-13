@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System.Text.Json;
+using System.Diagnostics;
 
 namespace ChromeDriverUnitTest
 {
@@ -46,6 +47,13 @@ namespace ChromeDriverUnitTest
      //       PageSpot.Click();
 
      //   }
+
+    [OneTimeSetUp]
+    public void StartTest()
+        {
+            Trace.Listeners.Add(new ConsoleTraceListener());
+        }
+
     [Test]
         public void Test1()
         {
@@ -53,7 +61,20 @@ namespace ChromeDriverUnitTest
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
             driver.Manage().Window.Maximize();
             pageURL = "https://testnet.bybit.com/";
+
             driver.Navigate().GoToUrl(pageURL);
+            CookieImport.getInstance().LoadCookies("");
+            Trace.WriteLine("sfdsf");
+            Assert.True((CookieImport.getInstance().CookieList.Count != 0));
+            foreach(var cookie in CookieImport.getInstance().CookieList)
+            {
+                
+                try
+                {
+                    driver.Manage().Cookies.AddCookie(new Cookie(cookie.Name, cookie.Value));
+                }
+                catch { }
+            }
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12);
             IWebElement LoginButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
             LoginButton.Click();
