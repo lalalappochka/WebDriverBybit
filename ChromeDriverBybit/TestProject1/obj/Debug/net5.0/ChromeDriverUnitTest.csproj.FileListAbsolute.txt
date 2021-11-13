@@ -1,8 +1,3 @@
-D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.csprojAssemblyReference.cache
-D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.GeneratedMSBuildEditorConfig.editorconfig
-D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.AssemblyInfoInputs.cache
-D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.AssemblyInfo.cs
-D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.csproj.CoreCompileInputs.cache
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\bin\Debug\net5.0\NUnit3.TestAdapter.dll
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\bin\Debug\net5.0\NUnit3.TestAdapter.pdb
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\bin\Debug\net5.0\nunit.engine.dll
@@ -94,6 +89,10 @@ D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\bin\Debug\net5.0\
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\bin\Debug\net5.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\bin\Debug\net5.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\bin\Debug\net5.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.AssemblyInfoInputs.cache
+D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.AssemblyInfo.cs
+D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.csproj.CoreCompileInputs.cache
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.csproj.CopyComplete
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.dll
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ref\ChromeDriverUnitTest.dll
