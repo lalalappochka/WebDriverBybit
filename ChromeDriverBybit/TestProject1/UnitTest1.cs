@@ -63,7 +63,8 @@ namespace ChromeDriverUnitTest
             PasswordField.SendKeys(userPassword);
             IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
             EnterField.Click();
-            IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]")); /*Открывает страницу неавторизированную, в акк вошло*/
+            IWebElement Icon = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[3]/div/div/div"));
+            IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]")); 
             PageSpot.Click();
             IWebElement AdvancedSection = driver.FindElement(By.XPath("//*[@id='root']/div[1]/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/span[2]"));
             AdvancedSection.Click();
