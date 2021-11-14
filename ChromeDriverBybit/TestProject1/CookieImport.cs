@@ -1,42 +1,24 @@
-using System;
 using System.IO;
 using System.Net;
-using System.Threading.Tasks;
-using System.Text.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
-class CookieImport
+public static class CookieImport
 {
-    private static CookieImport instance;
 
-    public List<CustomCookie> CookieList;
+    private static List<Cookie> cookieList = new List<Cookie>();
 
-    private CookieImport()
-    {}
-
-    public static CookieImport getInstance()
+    public static List<Cookie> CookieList
     {
-        if (instance == null)
-        {
-            instance = new CookieImport();
-            instance.CookieList = new List<CustomCookie>();
-        }
-        return instance;
+        get { return cookieList; }
     }
 
-    public void LoadCookies(string filepath)
+    public static void LoadCookies(string filepath)
     {
-        using(StreamReader fs = new StreamReader("D:\\3_course\\epam\\WebDriverBybit\\Cookie.json"))
+        FileStream fs = new FileStream(filepath, FileMode.Open);
+        using (StreamReader sr = new StreamReader(fs))
         {
-            var str = fs.ReadToEnd();
-            CookieList = JsonSerializer.Deserialize<List<CustomCookie>>(str);
-
+            cookieList = JsonConvert.DeserializeObject<List<Cookie>>(sr.ReadToEnd());
         }
     }
-}
-
-class CustomCookie
-{
-    public string Name { get; set; }
-    public string Value { get; set; }
 }
