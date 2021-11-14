@@ -40,26 +40,26 @@ namespace ChromeDriverUnitTest
             {
                 driver.Manage().Cookies.AddCookie(new OpenQA.Selenium.Cookie(cookie.Name, cookie.Value));
             }
+            driver.Navigate().Refresh();
+            driver.Navigate().GoToUrl(pageURL);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(12);
             IWebElement LoginButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
             LoginButton.Click();
-            //IWebElement EmailField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
-            //EmailField.SendKeys(userEmail);
-            var element = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
+            IWebElement EmailField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
+            EmailField.SendKeys(userEmail);
+            //var element = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
 
-            for (int i = 0; i < userEmail.Length; i++)
-            {
-                element.SendKeys(userEmail[i].ToString());
-            }
+            //for (int i = 0; i < userEmail.Length; i++)
+            //{
+            //    element.SendKeys(userEmail[i].ToString());
+            //}
             IWebElement PasswordField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div[2]/input"));
             PasswordField.SendKeys(userPassword);
 
             IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
             EnterField.Click();
             IWebElement Icon = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[3]/div/div/div"));
-            //IWebElement PageSpot = driver.FindElement(By.XPath("//*[@id='HEADER-NAV']/a[3]")); 
-            //PageSpot.Click();
             driver.Navigate().GoToUrl("https://testnet.bybit.com/en-US/trade/spot/BTC/USDT");
             IWebElement AdvancedSection = driver.FindElement(By.XPath("//*[@id='root']/div[1]/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/span[2]"));
             AdvancedSection.Click();
