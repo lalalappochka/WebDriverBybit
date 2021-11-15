@@ -74,7 +74,7 @@ namespace ChromeDriverUnitTest
             ChoiceBTC.Click();
             IWebElement TransferableAmount = driver.FindElement(By.CssSelector(".by-input__right-icon > .by-button.by-button--brand"));
             TransferableAmount.Click();
-            IWebElement ConfirmButton = driver.FindElement(By.ClassName(".by-button--contained"));
+            IWebElement ConfirmButton = driver.FindElement(By.ClassName(".by-button asset-transfer__operation-primary-btn by-button--contained by-button--large by-button--brand"));
             ConfirmButton.Click();
 
 
