@@ -3,7 +3,6 @@ using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using System.Text.Json;
 using System.Diagnostics;
 
 namespace ChromeDriverUnitTest
@@ -15,7 +14,7 @@ namespace ChromeDriverUnitTest
         private string pageURL;
         private string userEmail = "lalalappochka@gmail.com";
         private string userPassword = "P@ssw0rd";
-        private string typeofgraphic = "Connors RSI";
+        
 
 
         [OneTimeSetUp]
@@ -41,42 +40,41 @@ namespace ChromeDriverUnitTest
             //}
             //driver.Navigate().Refresh();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            IWebElement LoginButton = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/span[1]"));
+            IWebElement LoginButton = driver.FindElement(By.ClassName("header-login"));
             LoginButton.Click();
-            //IWebElement EmailField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
-            //EmailField.SendKeys(userEmail);
-            var element = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
-
-            for (int i = 0; i < userEmail.Length; i++)
-            {
-                element.SendKeys(userEmail[i].ToString());
-            }
-            IWebElement PasswordField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div[1]/div[2]/input"));
+            IWebElement EmailField = driver.FindElements(By.CssSelector(".by-input-newui-field > .by-input-newui-field__input"))[0];
+            EmailField.SendKeys(userEmail);
+            //var element = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
+            //for (int i = 0; i < userEmail.Length; i++)
+            //{
+            //    element.SendKeys(userEmail[i].ToString());
+            //}
+            IWebElement PasswordField = driver.FindElements(By.CssSelector(".by-input-newui-field > .by-input-newui-field__input "))[1];
             PasswordField.SendKeys(userPassword);
-
-            IWebElement EnterField = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[2]/div/a"));
+            IWebElement EnterField = driver.FindElements(By.CssSelector(".log-newui-footer-submit "))[0];
             EnterField.Click();
-            IWebElement Icon = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[3]/div/div/div"));
-            IWebElement Assets = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[1]/div/div/div/span[1]"));
+            IWebElement Icon = new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(driver => driver.FindElement(By.ClassName("icon-profile")));
+            //IWebElement Icon = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[3]/div/div/div"));
+            IWebElement Assets = driver.FindElements(By.ClassName("by-dropdown--xx-large"))[3];
             Assets.Click();
             driver.Navigate().GoToUrl("https://testnet.bybit.com/user/assets/home");
-            IWebElement Transfer = driver.FindElement(By.XPath("//*[@id='root']/div/main/aside/div/div[1]/div/button[3]"));
+            IWebElement Transfer = driver.FindElements(By.ClassName("operation-default-btn"))[1];
             Transfer.Click();
-            IWebElement SenderAccount = driver.FindElement(By.XPath("//*[@id='modal-root']/div[1]/div/div[2]/div[1]/div[1]"));
+            IWebElement SenderAccount = driver.FindElement(By.CssSelector(".asset-transfer__account > .asset-transfer__account-wraper"));
             SenderAccount.Click();
-            IWebElement ChoiceSendAccount = driver.FindElement(By.XPath("//*[@id='modal-root']/div[1]/div/div[2]/div[1]/div[1]/div[3]/div[4]"));
+            IWebElement ChoiceSendAccount = wait.Until(driver => driver.FindElements(By.CssSelector(".asset-transfer__account > .asset-transfer__account-list-wraper > .asset-transfer__account-list"))[2]);
             ChoiceSendAccount.Click();
-            IWebElement AccountReceive = driver.FindElement(By.XPath("//*[@id='modal-root']/div[1]/div/div[2]/div[1]/div[3]"));
+            IWebElement AccountReceive = wait.Until(driver => driver.FindElements(By.CssSelector(".asset-transfer__account  > .asset-transfer__account-wraper"))[1]);
             AccountReceive.Click();
-            IWebElement ChoiceReceiver = driver.FindElement(By.XPath("//*[@id='modal-root']/div[1]/div/div[2]/div[1]/div[3]/div[3]/div[2]"));
+            IWebElement ChoiceReceiver = wait.Until(driver => driver.FindElements(By.CssSelector(".asset-transfer__account-list"))[1]);
             ChoiceReceiver.Click();
-            IWebElement Coin = driver.FindElement(By.XPath("//*[@id='modal-root']/div[1]/div/div[2]/div[3]/div"));
+            IWebElement Coin = wait.Until(driver => driver.FindElement(By.CssSelector(".by-select-adv-selection-search-input")));
             Coin.Click();
-            IWebElement ChoiceBTC = driver.FindElement(By.XPath("//*[@id='modal-root']/div[2]/div/div/div/div[2]/div[1]/div/div/div[4]"));
+            IWebElement ChoiceBTC = wait.Until(driver => driver.FindElements(By.CssSelector(".by-select-adv-item-option-content"))[3]);
             ChoiceBTC.Click();
-            IWebElement TransferableAmount = driver.FindElement(By.XPath("//*[@id='modal-root']/div/div/div[2]/div[5]/div/div/span[1]/input"));
-            TransferableAmount.SendKeys("0.2");
-            IWebElement ConfirmButton = driver.FindElement(By.XPath("//*[@id='modal-root']/div[1]/div/div[2]/div[6]/button"));
+            IWebElement TransferableAmount = driver.FindElement(By.CssSelector(".by-input__right-icon > .by-button.by-button--brand"));
+            TransferableAmount.Click();
+            IWebElement ConfirmButton = driver.FindElement(By.ClassName(".by-button--contained"));
             ConfirmButton.Click();
 
 
