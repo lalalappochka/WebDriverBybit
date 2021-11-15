@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System.Diagnostics;
+using System.Threading;
 
 namespace ChromeDriverUnitTest
 {
@@ -74,8 +75,15 @@ namespace ChromeDriverUnitTest
             ChoiceBTC.Click();
             IWebElement TransferableAmount = driver.FindElement(By.CssSelector(".by-input__right-icon > .by-button.by-button--brand"));
             TransferableAmount.Click();
-            IWebElement ConfirmButton = driver.FindElement(By.ClassName(".by-button asset-transfer__operation-primary-btn by-button--contained by-button--large by-button--brand"));
+            
+            //Thread.Sleep(3000);
+            IWebElement ConfirmButton = driver.FindElement(By.ClassName("by-button--contained"));
+            //IWebElement ConfirmButton = driver.FindElement(By.XPath("//*[@id='modal - root']/div[1]/div/div[2]/div[6]/button"));
             ConfirmButton.Click();
+            //Thread.Sleep(3000);
+            //ConfirmButton.Click();
+            //Thread.Sleep(3000);
+            //ConfirmButton.Click();
 
 
 

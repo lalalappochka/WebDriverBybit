@@ -98,4 +98,3 @@ D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ref\ChromeDriverUnitTest.dll
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.pdb
 D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.genruntimeconfig.cache
-D:\3_course\epam\WebDriverBybit\ChromeDriverBybit\TestProject1\obj\Debug\net5.0\ChromeDriverUnitTest.csprojAssemblyReference.cache
