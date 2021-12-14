@@ -34,28 +34,16 @@ namespace ChromeDriverUnitTest
             driver.Manage().Window.Maximize();
             pageURL = "https://testnet.bybit.com/";
             driver.Navigate().GoToUrl(pageURL);
-
-            //foreach (System.Net.Cookie cookie in CookieImport.CookieList)
-            //{
-            //    driver.Manage().Cookies.AddCookie(new OpenQA.Selenium.Cookie(cookie.Name, cookie.Value));
-            //}
-            //driver.Navigate().Refresh();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
             IWebElement LoginButton = driver.FindElement(By.ClassName("header-login"));
             LoginButton.Click();
             IWebElement EmailField = driver.FindElements(By.CssSelector(".by-input-newui-field > .by-input-newui-field__input"))[0];
             EmailField.SendKeys(userEmail);
-            //var element = driver.FindElement(By.XPath("//*[@id='__layout']/div/main/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div[1]/div[2]/input"));
-            //for (int i = 0; i < userEmail.Length; i++)
-            //{
-            //    element.SendKeys(userEmail[i].ToString());
-            //}
             IWebElement PasswordField = driver.FindElements(By.CssSelector(".by-input-newui-field > .by-input-newui-field__input "))[1];
             PasswordField.SendKeys(userPassword);
             IWebElement EnterField = driver.FindElements(By.CssSelector(".log-newui-footer-submit "))[0];
             EnterField.Click();
             IWebElement Icon = new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(driver => driver.FindElement(By.ClassName("icon-profile")));
-            //IWebElement Icon = driver.FindElement(By.XPath("//*[@id='uniFrameHeader']/div[2]/div[3]/div/div/div"));
             IWebElement Assets = driver.FindElements(By.ClassName("by-dropdown--xx-large"))[3];
             Assets.Click();
             driver.Navigate().GoToUrl("https://testnet.bybit.com/user/assets/home");
@@ -65,6 +53,8 @@ namespace ChromeDriverUnitTest
             SenderAccount.Click();
             IWebElement ChoiceSendAccount = wait.Until(driver => driver.FindElements(By.CssSelector(".asset-transfer__account > .asset-transfer__account-list-wraper > .asset-transfer__account-list"))[2]);
             ChoiceSendAccount.Click();
+            //IWebElement CashBeforeTransfSpot = driver.FindElements(By.CssSelector( ".asset-transfer__account-wraper > .asset-transfer__account-value"))[0];
+            IWebElement CashBeforeTransfDer = driver.FindElements(By.CssSelector(".asset-transfer__account-wraper > .asset-transfer__account-value"))[1];
             IWebElement AccountReceive = wait.Until(driver => driver.FindElements(By.CssSelector(".asset-transfer__account  > .asset-transfer__account-wraper"))[1]);
             AccountReceive.Click();
             IWebElement ChoiceReceiver = wait.Until(driver => driver.FindElements(By.CssSelector(".asset-transfer__account-list"))[1]);
@@ -73,17 +63,15 @@ namespace ChromeDriverUnitTest
             Coin.Click();
             IWebElement ChoiceBTC = wait.Until(driver => driver.FindElements(By.CssSelector(".by-select-adv-item-option-content"))[3]);
             ChoiceBTC.Click();
-            IWebElement TransferableAmount = driver.FindElement(By.CssSelector(".by-input__right-icon > .by-button.by-button--brand"));
-            TransferableAmount.Click();
-            
-            //Thread.Sleep(3000);
+            IWebElement TransferableAmount = driver.FindElement(By.CssSelector(".by-input__inner"));
+            TransferableAmount.SendKeys("0.2");
             IWebElement ConfirmButton = driver.FindElement(By.ClassName("by-button--contained"));
-            //IWebElement ConfirmButton = driver.FindElement(By.XPath("//*[@id='modal - root']/div[1]/div/div[2]/div[6]/button"));
             ConfirmButton.Click();
-            //Thread.Sleep(3000);
-            //ConfirmButton.Click();
-            //Thread.Sleep(3000);
-            //ConfirmButton.Click();
+            IWebElement CashAfterTransf = driver.FindElements(By.CssSelector(".asset-transfer__account-wraper > .asset-transfer__account-value"))[1];
+            Assert.AreEqual((Convert.ToDouble(TransferableAmount) + Convert.ToDouble(CashBeforeTransfDer)), Convert.ToDouble(CashAfterTransf));
+            driver.Quit();
+
+         
 
 
 
